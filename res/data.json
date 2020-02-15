@@ -1,0 +1,6 @@
+{
+	"token" : "bp0jbknrh5r90eafrea0",
+	"threshold" : 0.7,
+	"symbols" : ["ABMD", "PM", "SPG", "TWLO", "WDC"],
+	"values" : [187.01, 84.68, 139.99, 122.76, 68.41]
+}
