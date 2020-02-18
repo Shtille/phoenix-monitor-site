@@ -229,8 +229,7 @@ function onGetJSON(data){
 				if (index < count){
 					let url = getQuoteUrl(globalData.token, globalData.symbols[index]);
 					$.get(url, function(data, status){
-						//let dataValue = (status === "success") ? data.pc : 0;
-						let dataValue = 0; // for test purpose
+						let dataValue = (status === "success") ? data.pc : 0;
 						globalData.values[index] = dataValue;
 						++index;
 						updateProgressBar((index/count*100).toFixed(0));
