@@ -7,17 +7,22 @@ const ButtonColors = {
 var globalData = null;
 
 function createChart(labels, series){
-	new Chartist.Line('.ct-chart', {
+	let data = {
 		labels: labels,
 		series: series
-	}, {
+	};
+	let options = {
 		lineSmooth: Chartist.Interpolation.none(),
 		showPoint: false,
 		fullWidth: true,
 		chartPadding: {
 			right: 40
+		},
+		axisX: {
+			offset: 70
 		}
-	});
+	};
+	new Chartist.Line('.ct-chart', data, options);
 }
 function makeChart(data){
 	if (!data || !data.c)
@@ -25,10 +30,14 @@ function makeChart(data){
 
 	let labels = [];
 	let series = [];
-	// let cl = data.c.length;
-	// for (let i = 0; i < cl; ++i) {
-	// 	labels.push(i + 1);
-	// }
+	if (data.c.length === data.t.length) {
+		let tl = data.t.length;
+		for (let i = 0; i < tl; ++i) {
+			let unixTimeStamp = data.t[i];
+			let date = new Date(unixTimeStamp * 1000);
+			labels.push(date.toDateString());
+		}
+	}
 	series.push(data.c);
 	// Finally
 	createChart(labels, series);
